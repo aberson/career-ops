@@ -449,8 +449,11 @@ is_rate_limit_log() {
 }
 
 is_session_limit_log() {
+  # Signature shared with /build-queue's spend canary/park (build-queue core
+  # "Spend-limit signature matcher"; dev/documentation/spend-aware-queue-plan.md D1).
+  # Update both copies together.
   local log_file="$1"
-  grep -Eiq '(session limit|resets [0-9:]+[ap]m|usage limit|limit[[:space:]]+reached)' "$log_file"
+  grep -Eiq '(session|usage|spend)[[:space:]]+limit|limit[[:space:]]+reached|resets [0-9:]+[ap]m' "$log_file"
 }
 
 mark_paused_rate_limit() {
