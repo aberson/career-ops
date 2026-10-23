@@ -17,6 +17,20 @@ node .claude/skills/apply-sheet/gen-apply-sheet.mjs 067 068 070 071
 - `--min-score 4.0` — instead of explicit numbers, select every tracker row scoring ≥ threshold.
 - `--out output/apply-sheet-<label>.html` — override the default `output/apply-sheet-<date>.html`.
 - `--title "..."` — page title.
+- `--note "..."` — explain the snapshot's scope and dates.
+- `--discoveries data/apply-discoveries.json` — add a searchable, unscored scan-discovery view.
+
+When refreshing after a scan, include unevaluated discoveries as well as evaluated roles:
+
+```bash
+node .claude/skills/apply-sheet/collect-discoveries.mjs --since YYYY-MM-DD --out data/apply-discoveries.json
+node .claude/skills/apply-sheet/gen-apply-sheet.mjs <report numbers> --discoveries data/apply-discoveries.json
+```
+
+The collector reads scan history plus dated warm sweeps in the pending pipeline, excludes
+already evaluated/tracked roles and frozen companies, and applies configured title/location filters.
+An optional `--refresh data/scan-refresh-YYYY-MM-DD.json` supplies browser checks and coverage notes.
+It writes only the discovery JSON. Never imply that discovery-only roles are scored or ready to apply.
 
 Data sources (read-only): `data/applications.md` (row status/notes), `reports/NNN-*.md`
 (header + Machine Summary YAML), `data/pdf-index.tsv` (tailored CV per report). A role with no
