@@ -36,7 +36,10 @@ Lane rules:      passing-notes docs/lane-rules.md, plus the project rules below
 - Parked lanes keep their entry: their cards are `done`, their resume docs live in
   `docs/lanes/parked/`, and `main` reopens them with `lane-open` under the same id.
   `job-sweep` was parked on 2026-11-17 right after the split, to free memory; when it
-  reopens it runs pipeline's `network.py match` on every shortlist and evaluation batch.
+  reopens it runs pipeline's `network.py match` on every shortlist and evaluation batch:
+  `python -X utf8 data/warm-network/network.py match <pipeline.md | shortlist.tsv>` or
+  `... match --company <name> --report <n>` (read-only JSON per company: routes, contacts,
+  flags, skip, contact_route). `unknown` means never looked, not no contact. Built 2026-11-17.
 - The earlier `sweep` lane (tailored CVs and apply packets for #166, #168, #172) is
   retired: its work was handed to `central`, and its window was stopped before it
   closed, so its card still reads `waiting`. Its scope now belongs to `job-sweep`.
