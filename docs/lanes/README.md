@@ -6,7 +6,7 @@ This file adds only local rules and never weakens them.
 
 ```text
 Lanes:           main - coordinate, relay the operator, tracker merges, ship (also coordinates shake-spear and alpha4gate)
-                 pipeline - PARKED 2026-11-17 for the night (resume doc docs/lanes/parked/pipeline.md) - warm connections, inside-out: centred on a person (warm-referral sweeps, packets, the referral ledger)
+                 pipeline - PARKED 2026-11-17 again, after a Codex run that built the Wilson packet and the warm matcher (resume doc docs/lanes/parked/pipeline.md) - warm connections, inside-out: centred on a person (warm-referral sweeps, packets, the referral ledger)
                  job-sweep - PARKED 2026-11-17 (memory; resume doc docs/lanes/parked/job-sweep.md) - outside-in job search: scans, liveness, ranking, evaluations, shortlists, cold-application CVs and apply prep
 Coordinator:     main   (records lanes and confirms ownership transfers)
 Shipper:         main   (commits and pushes)
